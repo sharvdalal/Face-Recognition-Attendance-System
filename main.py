@@ -11,9 +11,6 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import storage
 
-
-
-
 cred = credentials.Certificate("ServiceAccountKey.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': "https://face-attendance-c0922-default-rtdb.firebaseio.com/",
@@ -50,7 +47,6 @@ counter = 0
 id = -1
 imgStudent = []
 
-
 while True:
     success, img = cap.read()
 
@@ -82,9 +78,6 @@ while True:
                 imgBackground = cvzone.cornerRect(imgBackground, bbox, rt=0)
                 id = studentIds[matchIndex]
                 if counter == 0:
-                    cvzone.putTextRect(imgBackground, "Loading", (275, 400))
-                    cv2.imshow("Face Attendance", imgBackground)
-                    cv2.waitKey(1)
                     counter = 1
                     modeType = 1
 
